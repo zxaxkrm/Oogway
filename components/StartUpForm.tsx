@@ -7,7 +7,7 @@ import { Button } from "./ui/button";
 import { Send } from "lucide-react";
 import { formSchema } from "@/lib/validation";
 import { z } from "zod";
-import { toast, Toaster } from "sonner";
+import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { createIdea } from "@/lib/actions";
 
@@ -17,7 +17,13 @@ const StartUpForm = () => {
 
   const router = useRouter();
 
-  const handleFormSubmit = async (prevState: any, formData: FormData) => {
+  type FormState = {
+  error: string;
+  status: "INITIAL" | "SUCCESS" | "ERROR";
+  _id?: string;
+};
+
+  const handleFormSubmit = async (prevState: FormState, formData: FormData) => {
     try {
       const formValues = {
         title: formData.get("title") as string,

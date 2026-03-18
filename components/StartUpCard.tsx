@@ -4,7 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { Button } from "./ui/button";
-import { Author, Startup } from "@/sanity/types";
 import { STARTUP_QUERYResult } from "@/sanity/types";
 import { Skeleton } from "./ui/skeleton";
 

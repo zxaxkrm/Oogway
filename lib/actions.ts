@@ -1,13 +1,17 @@
 "use server";
 
 import { auth } from "@/auth";
-import { error } from "console";
 import { parseServerActionResponse } from "./utils";
-import { strict } from "assert";
 import slugify from "slugify";
 import { writeClient } from "@/sanity/lib/write-client";
 
-export const createIdea = async (state: any, form: FormData, pitch: string) => {
+type FormState = {
+  error: string;
+  status: "INITIAL" | "SUCCESS" | "ERROR";
+  _id?: string;
+};
+
+export const createIdea = async (state: FormState, form: FormData, pitch: string) => {
   const session = await auth();
   if (!session)
     return parseServerActionResponse({
