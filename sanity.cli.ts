@@ -16,15 +16,7 @@ export default defineCliConfig({
     overloadClientMethods: true,
   },
 
-   unstable_cli: {
-    frameworkConfig: {
-      resolve: {
-        alias: {
-          'easymde/dist/easymde.min.css': false,
-        }
-      }
-    }
-  }
+  
 })
 
 
